@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\Map">
+      <UniqueIdentifier>{0fb1a5e4-8837-4d2e-b50b-afd2591407b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Map">
+      <UniqueIdentifier>{2852b3d2-ecae-4e9f-8968-acb1f661dd00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Car">
+      <UniqueIdentifier>{96c99355-d090-41bf-9a66-3b95a11c76a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Car">
+      <UniqueIdentifier>{2a27fbab-5ae4-410d-b156-4bffcc81ed2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Client">
+      <UniqueIdentifier>{90a94d56-d20b-4998-8581-e5bff7cf0728}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Client">
+      <UniqueIdentifier>{7eaecae5-116b-4706-bf7b-169824b6b6b6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PlaneVector.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>ソース ファイル\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Branch.cpp">
+      <Filter>ソース ファイル\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="MapData.cpp">
+      <Filter>ソース ファイル\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Car.cpp">
+      <Filter>ソース ファイル\Car</Filter>
+    </ClCompile>
+    <ClCompile Include="MyaMap.cpp">
+      <Filter>ソース ファイル\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFrame.cpp">
+      <Filter>ソース ファイル\Client</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PlaneVector.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="MapData.h">
+      <Filter>ヘッダー ファイル\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="iBranch.h">
+      <Filter>ヘッダー ファイル\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Branch.h">
+      <Filter>ヘッダー ファイル\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>ヘッダー ファイル\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Car.h">
+      <Filter>ヘッダー ファイル\Car</Filter>
+    </ClInclude>
+    <ClInclude Include="TrafficState.h">
+      <Filter>ヘッダー ファイル\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFrame.h">
+      <Filter>ヘッダー ファイル\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnDirection.h">
+      <Filter>ヘッダー ファイル\Map</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

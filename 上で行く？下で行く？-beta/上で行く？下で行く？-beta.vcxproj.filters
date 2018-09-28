@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\MyaMap">
+      <UniqueIdentifier>{aaf7a76b-6ec8-42f9-8048-063e4a2f90db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\MyaMap">
+      <UniqueIdentifier>{84186908-8e5b-4746-8be4-053b9ed3c09c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UI">
+      <UniqueIdentifier>{2824ba64-e142-4055-9128-ec060e8695b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Utility">
+      <UniqueIdentifier>{69abe1b9-338f-44d9-a60a-387d9f65afe5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Utility">
+      <UniqueIdentifier>{b6911a94-13bf-4881-82fd-3d54693fd84e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Utility\Event">
+      <UniqueIdentifier>{5097da94-8675-4a8f-881c-036951dad0a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\UI">
+      <UniqueIdentifier>{1312d6b9-48f8-4ea2-862a-28b850142c3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Pamel">
+      <UniqueIdentifier>{abacc70b-cd6d-4274-9a54-57096fd38a8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Pamel">
+      <UniqueIdentifier>{50132aa8-cfd8-4216-9293-b22b0300d54a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="上で行く？下で行く？-beta.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Branch.cpp">
+      <Filter>ソース ファイル\MyaMap</Filter>
+    </ClCompile>
+    <ClCompile Include="Car.cpp">
+      <Filter>ソース ファイル\MyaMap</Filter>
+    </ClCompile>
+    <ClCompile Include="MapData.cpp">
+      <Filter>ソース ファイル\MyaMap</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>ソース ファイル\MyaMap</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaneVector.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="EventObj.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Toggle.cpp">
+      <Filter>ソース ファイル\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleton.cpp">
+      <Filter>ソース ファイル\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageDrawer.cpp">
+      <Filter>ソース ファイル\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Frame.cpp">
+      <Filter>ソース ファイル\Pamel</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageCard.cpp">
+      <Filter>ソース ファイル\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="IntroLeader.cpp">
+      <Filter>ソース ファイル\Pamel</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Point.h">
+      <Filter>ヘッダー ファイル\MyaMap</Filter>
+    </ClInclude>
+    <ClInclude Include="TrafficState.h">
+      <Filter>ヘッダー ファイル\MyaMap</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnDirection.h">
+      <Filter>ヘッダー ファイル\MyaMap</Filter>
+    </ClInclude>
+    <ClInclude Include="Branch.h">
+      <Filter>ヘッダー ファイル\MyaMap</Filter>
+    </ClInclude>
+    <ClInclude Include="iBranch.h">
+      <Filter>ヘッダー ファイル\MyaMap</Filter>
+    </ClInclude>
+    <ClInclude Include="MapData.h">
+      <Filter>ヘッダー ファイル\MyaMap</Filter>
+    </ClInclude>
+    <ClInclude Include="Car.h">
+      <Filter>ヘッダー ファイル\MyaMap</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionListener.h">
+      <Filter>ヘッダー ファイル\Utility\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaneVector.h">
+      <Filter>ヘッダー ファイル\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>ヘッダー ファイル\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="EventObj.h">
+      <Filter>ヘッダー ファイル\Utility\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Toggle.h">
+      <Filter>ヘッダー ファイル\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="MyaObject.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="WhatToDraw.h">
+      <Filter>ヘッダー ファイル\MyaMap</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageDrawer.h">
+      <Filter>ヘッダー ファイル\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="DrivePlan.h">
+      <Filter>ヘッダー ファイル\Pamel</Filter>
+    </ClInclude>
+    <ClInclude Include="MapDrawable.h">
+      <Filter>ヘッダー ファイル\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.h">
+      <Filter>ヘッダー ファイル\Pamel</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageCard.h">
+      <Filter>ヘッダー ファイル\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneLeadable.h">
+      <Filter>ヘッダー ファイル\Pamel</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="IntroLeader.h">
+      <Filter>ヘッダー ファイル\Pamel</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
