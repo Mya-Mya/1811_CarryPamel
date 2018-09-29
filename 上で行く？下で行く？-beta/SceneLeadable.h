@@ -2,15 +2,19 @@
 #include"MyaObject.h"
 #include"MapDrawable.h"
 #include"MapData.h"
+#include"SceneChangable.h"
 #include"Car.h"
+#pragma warning(disable:4244)
 
 class SceneLeadable :public MyaO {
 protected:
 	MapData * remoteMap;
 	Car *remoteCar;
+	SceneChangable *changer;
+	DrivePlan*drivePlan;
 public:
-	SceneLeadable(MapData*map, Car*car)
-	:remoteMap(map), remoteCar(car) {};
+	SceneLeadable(MapData*map, Car*car, DrivePlan*driveplan, SceneChangable*changer)
+	:remoteMap(map), remoteCar(car),changer(changer),drivePlan(driveplan) {};
 
 	virtual void init()override = 0;
 	virtual void update()override = 0;

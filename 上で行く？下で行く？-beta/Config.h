@@ -1,3 +1,3 @@
 #pragma once
-#define WINDOW_X 1280
-#define WINDOW_Y 720
+#define WND_X 1280
+#define WND_Y 720

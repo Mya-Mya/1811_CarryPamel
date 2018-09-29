@@ -11,13 +11,15 @@ private:
 	int xMargin = 20, yMargin = 10;
 	int xText=0, yText = 0;
 
-	int smallFont;
+	int textCol, bgCol;
+
+	int font;
 	int pageIndex=0;
 	vector<string> messages;
 public:
-	MessageCard(int x,int y);
+	MessageCard(int x,int y,int fontSize,int textCol,int bgCol);
 	void init()override {};
-	void add(string message);
+	int addPage(string message);
 	void nextPage();
 	void prevPage();
 	void jumpTo(int page);

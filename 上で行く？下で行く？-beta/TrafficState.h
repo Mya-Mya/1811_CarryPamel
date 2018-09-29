@@ -4,5 +4,5 @@ enum TrafficState {
 	Green = 0,//Ç‹Ç¡ÇΩÇ≠Ç»Ç¢
 	Orange=1,//è≠ÇµÇæÇØ
 	Red=2,//Ç‚Ç‚
-	Winered = 3//åÉÇµÇ¢
+	Purple = 3//åÉÇµÇ¢
 };

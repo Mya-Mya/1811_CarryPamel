@@ -5,23 +5,19 @@
 #include"DrivePlan.h"
 #include"ImageDrawer.h"
 #include"IntroLeader.h"
+#include"SceneChangable.h"
+#include"DrivingLeader.h"
 #include<string>
 using namespace std;
 
 #define IntroMessageMax 26
 
-enum sPamel {
-	Intro,
-	Driving,
-	Clear,
-};
-
 class SceneLeadable;
 
-class Frame :public MyaO
+class Frame :public SceneChangable, MyaO
 {
 private:
-	SceneLeadable * myScene;
+	SceneLeadable * myLeader=nullptr;
 
 	//部下
 	MapData * MyMap = nullptr;
@@ -33,9 +29,9 @@ private:
 
 	DrivePlan *MyDrivePlan;
 public:
-	void changeScene(sPamel next);//インターフェース化するね
-	static int Width;
-	static int Height;
+	void changeScene(FrameScene next)override;
+	//static int Width;
+	//static int Height;
 	void init();
 	void update() {};
 	void draw() {};

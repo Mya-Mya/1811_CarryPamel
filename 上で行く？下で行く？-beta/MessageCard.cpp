@@ -1,17 +1,22 @@
 #include "MessageCard.h"
 #include"DxLib.h"
+#pragma warning(disable:4018)
 
-MessageCard::MessageCard(int x, int y)
+
+MessageCard::MessageCard(int x, int y, int fontSize, int textCol, int bgCol)
 {
 	this->x = x;
 	this->y = y;
-	smallFont = CreateFontToHandle("メイリオ", 20, 4, DX_FONTTYPE_NORMAL);
+	this->bgCol = bgCol;
+	this->textCol = textCol;
+	font = CreateFontToHandle("メイリオ", fontSize, 4, DX_FONTTYPE_ANTIALIASING);
 }
 
-void MessageCard::add(string message)
+int MessageCard::addPage(string message)
 {
 	messages.push_back(message);
 	jumpTo(0);
+	return messages.size() - 1;
 }
 
 void MessageCard::nextPage()
@@ -29,8 +34,7 @@ void MessageCard::jumpTo(int page)
 	if (page < 0 || messages.size() < page)return;
 	pageIndex = page;
 	if (isEnd())return;
-	//GetDrawStringSizeToHandle(&xText, &yText, NULL, smallFont, messages[pageIndex].c_str());
-	GetDrawStringSizeToHandle(&xText, &yText,NULL,messages[pageIndex].c_str(),messages[pageIndex].length(),smallFont);
+	GetDrawStringSizeToHandle(&xText, &yText,NULL,messages[pageIndex].c_str(),messages[pageIndex].length(),font);
 }
 
 int MessageCard::nowPage()
@@ -48,10 +52,12 @@ void MessageCard::draw()
 {
 	if (isEnd())return;
 
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 220);
 	DrawBox(x, y,
 		x+xMargin * 2 + xText,
 		y+yMargin * 2 + yText, 
-		GetColor(40, 40, 40), TRUE);
+		bgCol, TRUE);
 	DrawFormatStringToHandle(x + xMargin, y + yMargin,
-		GetColor(240, 240, 240), smallFont, messages[pageIndex].c_str());
+		textCol, font, messages[pageIndex].c_str());
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }

@@ -8,7 +8,7 @@
 #include"MapDrawable.h"
 
 using namespace std;
-#define MAP_SCREEN_W 3000
+#define MAP_SCREEN_W 3400
 #define MAP_SCREEN_H 2800
 
 class MapData:public  MapDrawable 

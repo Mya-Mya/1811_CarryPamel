@@ -10,13 +10,15 @@ class Point :public MapDrawable,
 	MyaO
 {
 private:
+	int x, y;
 	iBranch * MyBranch;
 	Point *MyLink;
 	TrafficState MyTS=TrafficState_None;
-	int LineColor;
+	int lineColWithTS,lineColWithNoTS;
 
 	bool IFScreenTS = false;
 public:
+	void setPos(int x, int y);
 	void rgstLink(Point*link,TrafficState ts);
 	void rgstrIBranch(iBranch *you);
 	void init();

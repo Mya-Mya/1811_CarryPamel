@@ -2,25 +2,30 @@
 #include "DxLib.h"
 
 
+void Point::setPos(int x, int y)
+{
+	this->x = x;
+	this->y = y;
+}
+
 void Point::rgstLink(Point *link, TrafficState ts)
 {
 	MyLink = link;
 	MyTS = ts;
 	switch (ts) {
 	case Green:
-		LineColor = GetColor(120, 255, 0);
+		lineColWithTS = GetColor(120, 255, 0);
 		break;
 	case Orange:
-		LineColor = GetColor(255, 173, 86);
+		lineColWithTS = GetColor(255, 173, 86);
 		break;
 	case Red:
-		LineColor = GetColor(255, 30, 0);
+		lineColWithTS = GetColor(255, 30, 0);
 		break;
-	case Winered:
-		LineColor = GetColor(104, 15, 0);
+	case Purple:
+		lineColWithTS = GetColor(158, 28, 191);
 		break;
 	case TrafficState_None:
-		LineColor = GetColor(50, 50, 50);
 		break;
 	}
 }
@@ -32,7 +37,8 @@ void Point::rgstrIBranch(iBranch * you)
 
 void Point::init()
 {
-	LineColor = GetColor(210, 160, 220);
+	lineColWithTS = GetColor(111, 176, 21);
+	lineColWithNoTS = GetColor(150, 150, 150);
 }
 
 
@@ -49,12 +55,12 @@ iBranch * Point::getBranch()
 
 int Point::getX()
 {
-	return MyBranch->getX();
+	return x;
 }
 
 int Point::getY()
 {
-	return MyBranch->getY();
+	return y;
 }
 
 bool Point::canTurn(TurnDirection td)
@@ -82,8 +88,6 @@ TrafficState Point::getTS()
 void Point::drawOnMap()
 {
 	if (MyLink != nullptr)
-		DrawLine(getX(), getY(), MyLink->getX(), MyLink->getY(),
-		(IFScreenTS ? LineColor : GetColor(50, 50, 50)), 4);
-
-	DrawCircle(getX(), getY(), 4, GetColor(0, 0, 0), TRUE);
+		DrawLine(x, y, MyLink->getX(), MyLink->getY(),
+		(IFScreenTS ? lineColWithTS : lineColWithNoTS), 7);
 }

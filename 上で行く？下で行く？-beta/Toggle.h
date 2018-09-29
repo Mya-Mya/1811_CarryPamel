@@ -14,7 +14,7 @@ private:
 	int font;
 	int casingKeyNum;
 	bool available = true;
-	int nowCol, availableCol, unavailableCol;
+	int  availableTextCol, unavailableTextCol,availableBgCol,unavailableBgCol;
 public:
 	Toggle(int x, int y, int w, int h,string text,int textsize,int casingKeyNum);
 	void init() {};

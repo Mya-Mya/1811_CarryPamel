@@ -1,29 +1,30 @@
 #include "Frame.h"
 #include"DxLib.h"
+#include"Config.h"
 #include"Singleton.h"
 
-int Frame::Width = 1280;
-int Frame::Height = 720;
 
-void Frame::changeScene(sPamel next)
+void Frame::changeScene(FrameScene next)
 {
+	if(myLeader!=nullptr)delete myLeader;
 	switch (next)
 	{
 	case Intro:
-		myScene = (SceneLeadable*)new IntroLeader(MyMap, MyCar);
+		myLeader = (SceneLeadable*)new IntroLeader(MyMap, MyCar,MyDrivePlan,this);
 		break;
 	case Driving:
+		myLeader = (SceneLeadable*)new DrivingLeader(MyMap, MyCar, MyDrivePlan,this);
 		break;
 	case Clear:
-		break;
-	default:
 		break;
 	}
 }
 
 void Frame::init()
 {
-SetGraphMode(Frame::Width, Frame::Height, 32);
+	SetDoubleStartValidFlag(TRUE);
+	SetWindowText("上で行く？下で行く？beta 20180929");
+SetGraphMode(WND_X, WND_Y, 32);
 	ChangeWindowMode(TRUE), DxLib_Init(), SetDrawScreen(DX_SCREEN_BACK);
 
 	MyMap = new MapData();
@@ -36,75 +37,31 @@ SetGraphMode(Frame::Width, Frame::Height, 32);
 	BgCol = GetColor(250, 250, 250);
 	MapScreen = MakeScreen(MAP_SCREEN_W, MAP_SCREEN_H, TRUE);
 
+
 	changeScene(Intro);
 }
 
 void Frame::doMainLoop()
 {
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
-		DrawBox(0, 0, Frame::Width, Frame::Height, BgCol, TRUE);
+		DrawBox(0, 0, WND_X, WND_Y, BgCol, TRUE);
 		Keyboard::Instance()->Update();
 		
-		myScene->update();
+		myLeader->update();
 
-		SetDrawScreen(MapScreen);
-		SetFontSize(20 / myScene->getMapExr());
+		SetDrawScreen(MapScreen);//地図スクリーン
+		SetFontSize(25 / myLeader->getMapExr());
 		ClearDrawScreen();
-		myScene->drawAsMap();
+		myLeader->drawAsMap();
 		SetDrawScreen(DX_SCREEN_BACK);
 		DrawRotaGraph(
-			myScene->getMapX(), myScene->getMapY(), myScene->getMapExr(), 0,
+			myLeader->getMapX(), myLeader->getMapY(), myLeader->getMapExr(), 0,
 			MapScreen, TRUE
 		);
 
-		myScene->draw();
-		/*
-		SetFontSize(20 / MapScreenExr);
-		switch (now)
-		{
-		case Intro:
-			MapScreenExr = 0.25;
-			doIntro();
-			break;
-		case Driving:
-			MapScreenExr = 1.00;
-			doDriving();
-			break;
-		case Clear:
-			MapScreenExr = 0.25;
-			doClear();
-			break;
-		}
-		*/
+		myLeader->draw();
 	}
 }
-/*
-void Frame::doDriving()
-{
-	MyMap->setScreenTS(false);
-	if (!MyCar->isRunning()) {
-		if (CheckHitKey(KEY_INPUT_SPACE)) MyMap->setScreenTS(true);
-	}
-
-	MyCar->update();
-	if (MyCar->getCurrentBranch() == MyDrivePlan->goal)now = Clear;
-
-	SetDrawScreen(MapScreen);
-	ClearDrawScreen();
-	MyMap->setWhatToDraw(MapWhatToDraw::ROADS_DRAW);
-	MyMap->drawOnMap();
-	MyCar->drawOnMap();
-	MyMap->setWhatToDraw(MapWhatToDraw::SPOTNAMES_DRAW);
-	MyMap->drawOnMap();
-	SetDrawScreen(DX_SCREEN_BACK);
-	//車が画面中央に来るように仮想画面を描画
-	DrawRotaGraph(
-		Frame::Width *0.5 + MAP_SCREEN_W * 0.5*MapScreenExr - MyCar->getX()*MapScreenExr,
-		Frame::Height*0.5 + MAP_SCREEN_H * 0.5*MapScreenExr - MyCar->getY()*MapScreenExr,
-		MapScreenExr, 0, MapScreen, TRUE);
-	MyCar->draw();
-}
-*/
 /*
 void Frame::doClear() 
 {
@@ -124,5 +81,3 @@ void Frame::finalize()
 {
 	DxLib_End();
 }
-
-

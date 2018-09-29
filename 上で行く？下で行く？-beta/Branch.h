@@ -19,6 +19,7 @@ private:
 
 	MapWhatToDraw WhatToDraw;
 	int animClock = 0;
+	int spotCol,font;
 public:
 	Branch(int x,int y);
 	void init() {};
@@ -36,9 +37,8 @@ public:
 	/*from iBranch*/
 	bool canTurn(Point*nowpoint, TurnDirection td) override;
 	Point* turn(Point*nowpoint, TurnDirection td) override;
-	int getX() override;
-	int getY() override;
-	string getName() override;
+	int getX()override;
+	int getY()override;
 
 	/*from MapDrawable*/
 	void drawOnMap()override;

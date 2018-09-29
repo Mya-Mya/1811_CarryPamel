@@ -60,9 +60,6 @@
     <ClCompile Include="PlaneVector.cpp">
       <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="EventObj.cpp">
-      <Filter>ソース ファイル\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="Toggle.cpp">
       <Filter>ソース ファイル\UI</Filter>
     </ClCompile>
@@ -79,6 +76,9 @@
       <Filter>ソース ファイル\UI</Filter>
     </ClCompile>
     <ClCompile Include="IntroLeader.cpp">
+      <Filter>ソース ファイル\Pamel</Filter>
+    </ClCompile>
+    <ClCompile Include="DrivingLeader.cpp">
       <Filter>ソース ファイル\Pamel</Filter>
     </ClCompile>
   </ItemGroup>
@@ -148,6 +148,12 @@
     </ClInclude>
     <ClInclude Include="IntroLeader.h">
       <Filter>ヘッダー ファイル\Pamel</Filter>
+    </ClInclude>
+    <ClInclude Include="DrivingLeader.h">
+      <Filter>ヘッダー ファイル\Pamel</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneChangable.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

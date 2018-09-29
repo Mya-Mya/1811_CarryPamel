@@ -2,6 +2,7 @@
 #include"DxLib.h"
 #include<iostream>
 #include"Frame.h"
+#include"Config.h"
 #include"TurnDirection.h"
 #include"Singleton.h"
 #include<math.h>
@@ -17,11 +18,12 @@ void Car::init()
 	CarImage = LoadGraph("Image/CarImage.png");
 
 	//ï˚å¸ì]ä∑ÇéiÇÈÉ{É^Éì
-	int ToggleW = 100, ToggleH = 100, ToggleY = Frame::Height - ToggleH,
-		ToggleXStarting = Frame::Width / 2 - (ToggleW * 3) / 2;
-	Toggles[ToggleLeft] = new Toggle(ToggleXStarting + ToggleW * 0, ToggleY, ToggleW, ToggleH, "ç∂", 100, KEY_INPUT_LEFT);
-	Toggles[ToggleStraight] = new Toggle(ToggleXStarting + ToggleW * 1, ToggleY, ToggleW, ToggleH, "ëO", 100, KEY_INPUT_UP);
-	Toggles[ToggleRight] = new Toggle(ToggleXStarting + ToggleW * 2, ToggleY, ToggleW, ToggleH, "âE", 100, KEY_INPUT_RIGHT);
+	int ToggleW = 100, ToggleH = 100, ToggleY = WND_Y - ToggleH,
+		ToggleXStarting = WND_X / 2 - (ToggleW * 3) / 2,
+		ToggleFontSize = 40;
+	Toggles[ToggleLeft] = new Toggle(ToggleXStarting + ToggleW * 0, ToggleY, ToggleW, ToggleH, "Å©ç∂", ToggleFontSize, KEY_INPUT_LEFT);
+	Toggles[ToggleStraight] = new Toggle(ToggleXStarting + ToggleW * 1, ToggleY, ToggleW, ToggleH, "Å™\nëO", ToggleFontSize, KEY_INPUT_UP);
+	Toggles[ToggleRight] = new Toggle(ToggleXStarting + ToggleW * 2, ToggleY, ToggleW, ToggleH, "âEÅ®", ToggleFontSize, KEY_INPUT_RIGHT);
 	for (int i = 0; i < 3; i++)Toggles[i]->addActionListener(this);
 }
 
@@ -60,7 +62,7 @@ void Car::setCarVelocity(TrafficState ts)
 	case Red:
 		CarVelocity = 1.2;
 		break;
-	case Winered:
+	case Purple:
 		CarVelocity = 0.9;
 		break;
 	case TrafficState_None:
@@ -100,12 +102,7 @@ void Car::update()
 			if (Keyboard::Instance()->Get(KEY_INPUT_RETURN) != 0)turn(Back);
 		}else 
 			if (availableOnlyOneFork(NowPosition) !=TurnDirection_None) {//êÊÇ÷êiÇﬂÇÈï˚å¸Ç™1Ç¬ÇµÇ©Ç»Ç¢
-			for (TurnDirection i : {Right, Left, Straight}) {
-				if (NowPosition->canTurn(i)) {
-					turn(TurnDirection(i));
-					break;
-				}
-			}
+				turn(availableOnlyOneFork(NowPosition));
 		} 
 	}
 	else {//à⁄ìÆíÜ
@@ -128,7 +125,7 @@ int Car::getY()
 
 void Car::actionPerformed(EventObj * e)
 {
-	if (CarMovingL >= CarHeadding->size()) {//í‚é~íÜ
+	if (!isRunning()) {//í‚é~íÜ
 		if (e == Toggles[ToggleStraight])turn(Straight);
 		if (e == Toggles[ToggleRight])turn(Right);
 		if (e == Toggles[ToggleLeft])turn(Left);
@@ -139,17 +136,10 @@ void Car::drawOnMap()
 {
 	DrawRotaGraph(
 		BeforePosition->getX() + CarHeadding->scalarMultipleX(CarMovingL),
-		BeforePosition->getY() + CarHeadding->scalarMultipleY(CarMovingL),/*this->x this->y*/
+		BeforePosition->getY() + CarHeadding->scalarMultipleY(CarMovingL),
 		0.3,
 		atan2(CarHeadding->x(), -CarHeadding->y()),
 	CarImage, TRUE);
-}
-
-//îpé~ó\íË
-void Car::setDriveable(bool driveable)
-{
-	if (!driveable)CarVelocity = 0;
-	if (driveable)setCarVelocity(MyTS);
 }
 
 double Car::getCurrentVelocity()

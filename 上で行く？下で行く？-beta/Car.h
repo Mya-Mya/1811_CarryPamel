@@ -36,7 +36,6 @@ public:
 	int getY();
 
 	void setPosition(Point*position);
-	void setDriveable(bool driveable) ;
 	double getCurrentVelocity() ;
 	Point* getCurrentPosition() ;//ëñçsíÜÇÕnullptr
 	iBranch* getCurrentBranch(); //ëñçsíÜÇÕnullptr

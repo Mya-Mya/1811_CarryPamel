@@ -1,6 +1,7 @@
 #include "Toggle.h"
 #include"DxLib.h"
 #include"Singleton.h"
+#pragma warning(disable:4244)
 
 Toggle::Toggle(int x, int y, int w, int h, string text, int textsize,int casingKeyNum)
 {
@@ -13,20 +14,22 @@ Toggle::Toggle(int x, int y, int w, int h, string text, int textsize,int casingK
 	this->casingKeyNum = casingKeyNum;
 
 	font = CreateFontToHandle("ƒƒCƒŠƒI", textsize, 4, DX_FONTTYPE_NORMAL);
-	int textW = GetDrawFormatStringWidthToHandle(font, text.c_str());
+
+	int textW, textH;
+	GetDrawStringSizeToHandle(&textW, &textH, NULL, text.c_str(), text.length(), font);
 
 	this->textX = x + w * 0.5 - textW * 0.5;
-	this->textY = y + h * 0.5 - textsize * 0.5;
+	this->textY = y + h * 0.5 - textH * 0.5 /*‚¨‹CŽ‚¿‚Å10‰º‚Ö‚â‚Á‚Ä‚é*/+10;
 
-	availableCol = GetColor(238, 247, 79);
-	unavailableCol = GetColor(183, 186, 135);
+	availableTextCol = GetColor(243, 100, 17);
+	unavailableTextCol = GetColor(120, 120, 120);
+	availableBgCol = GetColor(255, 255, 255);
+	unavailableBgCol = GetColor(150,150,150);
 }
 
 void Toggle::setAvailable(bool available)
 {
 	this->available = available;
-	if (available)nowCol = availableCol;
-	if (!available)nowCol = unavailableCol;
 }
 
 void Toggle::update()
@@ -37,6 +40,15 @@ void Toggle::update()
 
 void Toggle::draw()
 {
-	DrawBox(x, y, x + w, y + h, nowCol, FALSE);
-	DrawFormatStringToHandle(textX, textY, nowCol, font, text.c_str());
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 200);
+	DrawBox(x, y, x + w, y + h,
+		available ? availableBgCol : unavailableBgCol
+		, TRUE);
+	DrawBox(x, y, x + w, y + h,
+		available ? availableTextCol : unavailableTextCol
+		, FALSE);
+	DrawFormatStringToHandle(textX, textY, 
+		available?availableTextCol:unavailableTextCol
+		, font, text.c_str());
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }

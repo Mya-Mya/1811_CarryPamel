@@ -7,6 +7,7 @@ Branch::Branch(int x,int y)
 	this->x = x;
 	this->y = y;
 	for (int i = 0; i < 4; i++)point[i] = nullptr;
+	spotCol = GetColor(80,170,33);
 }
 
 
@@ -16,6 +17,7 @@ Branch * Branch::makePoint(int branchNum)
 	Point *newPoint= new Point();
 	newPoint->init();
 	newPoint->rgstrIBranch(this);
+	newPoint->setPos(x, y);
 	point[branchNum] = newPoint;
 	return this;
 }
@@ -48,11 +50,7 @@ void Branch::setScreenTS(bool IfScreenTS)
 
 bool Branch::canTurn(Point *nowpoint, TurnDirection td)
 {
-	int nowpointnum = -1;
-	for (int i = 0; i < 4; i++) {
-		if (point[i] == nowpoint) nowpointnum = i;
-	}
-	return point[(4+nowpointnum+td)%4]!=nullptr;
+	return turn(nowpoint, td) != nullptr;
 }
 
 Point * Branch::turn(Point *nowpoint, TurnDirection td)
@@ -61,6 +59,7 @@ Point * Branch::turn(Point *nowpoint, TurnDirection td)
 	for (int i = 0; i < 4; i++) {
 		if (point[i] == nowpoint) nowpointnum = i;
 	}
+	if (point[(4 + nowpointnum + td) % 4] == nullptr)return nullptr;
 	return point[(4 + nowpointnum + td) % 4]->getLink();
 }
 
@@ -74,11 +73,6 @@ int Branch::getY()
 	return y;
 }
 
-string Branch::getName()
-{
-	return Name;
-}
-
 void Branch::drawOnMap()
 {
 	if (WhatToDraw == MapWhatToDraw::ROADS_DRAW) {
@@ -89,7 +83,8 @@ void Branch::drawOnMap()
 	if (WhatToDraw == MapWhatToDraw::SPOTNAMES_DRAW) {
 		if (Name == BRANCH_NONAME)return;
 		animClock++;
-		DrawFormatString(getX() + 5, getY() - 17, GetColor(100, 255, 100), "%s", animClock % 120 < 50 ? Name.c_str() : NameReading.c_str());
+		DrawFormatString(x + 4, y-20, spotCol, "%s", animClock % 360 < 180 ? Name.c_str() : NameReading.c_str());
+		DrawCircle(x, y, 6, spotCol, TRUE);
 	}
 }
 
