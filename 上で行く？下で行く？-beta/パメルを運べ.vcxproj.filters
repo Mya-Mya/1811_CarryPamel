@@ -66,9 +66,6 @@
     <ClCompile Include="Singleton.cpp">
       <Filter>ソース ファイル\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="ImageDrawer.cpp">
-      <Filter>ソース ファイル\UI</Filter>
-    </ClCompile>
     <ClCompile Include="Frame.cpp">
       <Filter>ソース ファイル\Pamel</Filter>
     </ClCompile>
@@ -79,6 +76,15 @@
       <Filter>ソース ファイル\Pamel</Filter>
     </ClCompile>
     <ClCompile Include="DrivingLeader.cpp">
+      <Filter>ソース ファイル\Pamel</Filter>
+    </ClCompile>
+    <ClCompile Include="ClearLeader.cpp">
+      <Filter>ソース ファイル\Pamel</Filter>
+    </ClCompile>
+    <ClCompile Include="OverLeader.cpp">
+      <Filter>ソース ファイル\Pamel</Filter>
+    </ClCompile>
+    <ClCompile Include="OverLeader2.cpp">
       <Filter>ソース ファイル\Pamel</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,9 +131,6 @@
     <ClInclude Include="WhatToDraw.h">
       <Filter>ヘッダー ファイル\MyaMap</Filter>
     </ClInclude>
-    <ClInclude Include="ImageDrawer.h">
-      <Filter>ヘッダー ファイル\UI</Filter>
-    </ClInclude>
     <ClInclude Include="DrivePlan.h">
       <Filter>ヘッダー ファイル\Pamel</Filter>
     </ClInclude>
@@ -140,9 +143,6 @@
     <ClInclude Include="MessageCard.h">
       <Filter>ヘッダー ファイル\UI</Filter>
     </ClInclude>
-    <ClInclude Include="SceneLeadable.h">
-      <Filter>ヘッダー ファイル\Pamel</Filter>
-    </ClInclude>
     <ClInclude Include="Config.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -154,6 +154,18 @@
     </ClInclude>
     <ClInclude Include="SceneChangable.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ClearLeader.h">
+      <Filter>ヘッダー ファイル\Pamel</Filter>
+    </ClInclude>
+    <ClInclude Include="Leadable.h">
+      <Filter>ヘッダー ファイル\Pamel</Filter>
+    </ClInclude>
+    <ClInclude Include="OverLeader.h">
+      <Filter>ヘッダー ファイル\Pamel</Filter>
+    </ClInclude>
+    <ClInclude Include="OverLeader2.h">
+      <Filter>ヘッダー ファイル\Pamel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
