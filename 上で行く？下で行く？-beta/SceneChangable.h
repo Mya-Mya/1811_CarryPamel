@@ -1,9 +1,11 @@
 #pragma once
 
 enum FrameScene {
+	None,
 	Intro,
 	Driving,
 	Clear,
+	Over,
 };
 class SceneChangable {
 public:
