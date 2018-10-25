@@ -205,6 +205,7 @@ void MapData::init()
 	b[48]-> rgstName( "ÔŒ©Ø",  "‚ ‚©‚Ý‚È");
 	b[71]-> rgstName("—³“n",  "‚è‚ã‚¤‚Æ");
 	b[69]-> rgstName( "ŽÚh",  "‚µ‚á‚­‚¶‚ã‚­");
+	b[59]->rgstName("ÃŽü", "‚¹‚¢‚µ‚ã‚¤");
 }
 	/*‰^“]Œv‰æ‘ì¬*/
 	driveplans.push_back(new DrivePlan( b[4]->getPoint(2),b[69] ));
