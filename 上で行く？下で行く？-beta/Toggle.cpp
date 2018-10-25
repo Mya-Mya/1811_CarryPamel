@@ -15,16 +15,22 @@ Toggle::Toggle(int x, int y, int w, int h, string text, int textsize,int casingK
 
 	font = CreateFontToHandle("メイリオ", textsize, 4, DX_FONTTYPE_NORMAL);
 
-	int textW, textH;
-	GetDrawStringSizeToHandle(&textW, &textH, NULL, text.c_str(), text.length(), font);
-
-	this->textX = x + w * 0.5 - textW * 0.5;
-	this->textY = y + h * 0.5 - textH * 0.5 /*お気持ちで10下へやってる*/+10;
+	setText(text);
 
 	availableTextCol = GetColor(243, 100, 17);
 	unavailableTextCol = GetColor(120, 120, 120);
 	availableBgCol = GetColor(255, 255, 255);
 	unavailableBgCol = GetColor(150,150,150);
+}
+
+void Toggle::setText(string text)
+{
+	this->text = text;
+	int textW, textH;
+	GetDrawStringSizeToHandle(&textW, &textH, NULL, text.c_str(), text.length(), font);
+
+	this->textX = x + w * 0.5 - textW * 0.5;
+	this->textY = y + h * 0.5 - textH * 0.5 /*お気持ちで10下へやってる*/+10;
 }
 
 void Toggle::setAvailable(bool available)
@@ -35,7 +41,7 @@ void Toggle::setAvailable(bool available)
 void Toggle::update()
 {
 	//有効な状態に定められたキーが押されたらハンドラーに働きかける
-	if (available&&Keyboard::Instance()->Get(casingKeyNum) != 0)eventFire();
+	if (available&&Keyboard::Instance()->Get(casingKeyNum) ==1)eventFire();
 }
 
 void Toggle::draw()

@@ -17,6 +17,7 @@ private:
 	int  availableTextCol, unavailableTextCol,availableBgCol,unavailableBgCol;
 public:
 	Toggle(int x, int y, int w, int h,string text,int textsize,int casingKeyNum);
+	void setText(string text);
 	void init() {};
 	void setAvailable(bool available);
 	void update();
