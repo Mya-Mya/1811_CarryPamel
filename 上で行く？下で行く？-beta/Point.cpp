@@ -38,7 +38,7 @@ void Point::rgstrIBranch(iBranch * you)
 void Point::init()
 {
 	lineColWithTS = GetColor(111, 176, 21);
-	lineColWithNoTS = GetColor(150, 150, 150);
+	lineColWithNoTS = GetColor(60, 60, 60);
 }
 
 
