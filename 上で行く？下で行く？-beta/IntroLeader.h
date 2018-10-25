@@ -1,13 +1,17 @@
 #pragma once
-#include"SceneLeadable.h"
+#include"Leadable.h"
 #include"MessageCard.h"
-
-class IntroLeader :public SceneLeadable
+#include"Toggle.h"
+#include"ActionListener.h"
+class IntroLeader :public Leadable, ActionListener
 {
 private:
-	MessageCard * message;
+	MessageCard * msc;
+	Toggle *nextPage, *prevPage;
+
 	int MES_SHOWSTART;
 	int MES_SHOWGOAL;
+	int MES_PUSHTODEP;
 public:
 	IntroLeader(MapData *map, Car *car,DrivePlan*driveplan,SceneChangable *changer);
 	void init()override {};
@@ -17,5 +21,7 @@ public:
 	double getMapExr()override;
 	int getMapX()override;
 	int getMapY()override;
+
+	void actionPerformed(EventObj*e)override;
 };
 
