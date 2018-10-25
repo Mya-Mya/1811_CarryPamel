@@ -7,7 +7,7 @@ Branch::Branch(int x,int y)
 	this->x = x;
 	this->y = y;
 	for (int i = 0; i < 4; i++)point[i] = nullptr;
-	spotCol = GetColor(80,170,33);
+	spotCol = GetColor(100,200,40);
 }
 
 
@@ -83,8 +83,8 @@ void Branch::drawOnMap()
 	if (WhatToDraw == MapWhatToDraw::SPOTNAMES_DRAW) {
 		if (Name == BRANCH_NONAME)return;
 		animClock++;
-		DrawFormatString(x + 4, y-20, spotCol, "%s", animClock % 360 < 180 ? Name.c_str() : NameReading.c_str());
-		DrawCircle(x, y, 6, spotCol, TRUE);
+		DrawFormatString(x + 4, y-20, spotCol, "%s", animClock % 280 < 140 ? Name.c_str() : NameReading.c_str());
+		DrawCircle(x, y, 7, spotCol, TRUE);
 	}
 }
 
