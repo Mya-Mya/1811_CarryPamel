@@ -19,7 +19,7 @@ private:
 public:
 	MessageCard(int x,int y,int fontSize,int textCol,int bgCol);
 	void init()override {};
-	int addPage(string message);
+	int addPage(string msc);
 	void nextPage();
 	void prevPage();
 	void jumpTo(int page);
