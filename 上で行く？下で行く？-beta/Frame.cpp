@@ -6,24 +6,13 @@
 
 void Frame::changeScene(FrameScene next)
 {
-	if(myLeader!=nullptr)delete myLeader;
-	switch (next)
-	{
-	case Intro:
-		myLeader = (SceneLeadable*)new IntroLeader(MyMap, MyCar,MyDrivePlan,this);
-		break;
-	case Driving:
-		myLeader = (SceneLeadable*)new DrivingLeader(MyMap, MyCar, MyDrivePlan,this);
-		break;
-	case Clear:
-		break;
-	}
+	nextQue = next;
 }
 
 void Frame::init()
 {
 	SetDoubleStartValidFlag(TRUE);
-	SetWindowText("上で行く？下で行く？beta 20180929");
+	SetWindowText("パメルを運べ");
 SetGraphMode(WND_X, WND_Y, 32);
 	ChangeWindowMode(TRUE), DxLib_Init(), SetDrawScreen(DX_SCREEN_BACK);
 
@@ -37,7 +26,6 @@ SetGraphMode(WND_X, WND_Y, 32);
 	BgCol = GetColor(250, 250, 250);
 	MapScreen = MakeScreen(MAP_SCREEN_W, MAP_SCREEN_H, TRUE);
 
-
 	changeScene(Intro);
 }
 
@@ -46,6 +34,25 @@ void Frame::doMainLoop()
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
 		DrawBox(0, 0, WND_X, WND_Y, BgCol, TRUE);
 		Keyboard::Instance()->Update();
+
+		if (nextQue != None) {
+			if (myLeader != nullptr)delete myLeader;
+			switch (nextQue)
+			{
+			case Intro:
+				myLeader = (Leadable*)new IntroLeader(MyMap, MyCar, MyDrivePlan, this);
+				break;
+			case Driving:
+				myLeader = (Leadable*)new DrivingLeader(MyMap, MyCar, MyDrivePlan, this);
+				break;
+			case Clear:
+				myLeader = (Leadable*)new ClearLeader(MyMap, MyCar, MyDrivePlan, this);
+				break;
+			case Over:
+				myLeader = (Leadable*)new OverLeader(MyMap, MyCar, MyDrivePlan, this);
+			}
+			nextQue = None;
+		}
 		
 		myLeader->update();
 
@@ -62,21 +69,7 @@ void Frame::doMainLoop()
 		myLeader->draw();
 	}
 }
-/*
-void Frame::doClear() 
-{
-	SetDrawScreen(MapScreen);
-	ClearDrawScreen();
-	
-	MyMap->drawOnMap();
 
-	SetDrawScreen(DX_SCREEN_BACK);
-	DrawRotaGraph(Frame::Width *0.5, Frame::Height*0.5, MapScreenExr, 0, MapScreen, TRUE);
-
-	Message = "お前よくやったぞ";
-	drawMessage();
-}
-*/
 void Frame::finalize()
 {
 	DxLib_End();
