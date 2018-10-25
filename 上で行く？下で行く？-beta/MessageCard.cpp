@@ -12,9 +12,9 @@ MessageCard::MessageCard(int x, int y, int fontSize, int textCol, int bgCol)
 	font = CreateFontToHandle("ÉÅÉCÉäÉI", fontSize, 4, DX_FONTTYPE_ANTIALIASING);
 }
 
-int MessageCard::addPage(string message)
+int MessageCard::addPage(string msc)
 {
-	messages.push_back(message);
+	messages.push_back(msc);
 	jumpTo(0);
 	return messages.size() - 1;
 }
@@ -52,7 +52,7 @@ void MessageCard::draw()
 {
 	if (isEnd())return;
 
-	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 220);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 230);
 	DrawBox(x, y,
 		x+xMargin * 2 + xText,
 		y+yMargin * 2 + yText, 
