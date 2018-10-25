@@ -34,7 +34,7 @@ void Car::turn(TurnDirection td)
 	NowPosition = NowPosition->turn(td);
 
 	CarMovingL = 0;
-	running = false;
+	running = true;
 
 	setCarHeadding(BeforePosition, NowPosition);
 	setCarVelocity(NowPosition->getTS());
@@ -57,13 +57,13 @@ void Car::setCarVelocity(TrafficState ts)
 		CarVelocity= 3;
 		break;
 	case Orange:
-		CarVelocity = 2.3;
+		CarVelocity = 2;
 		break;
 	case Red:
-		CarVelocity = 1.2;
+		CarVelocity = 1;
 		break;
 	case Purple:
-		CarVelocity = 0.9;
+		CarVelocity = 0.5;
 		break;
 	case TrafficState_None:
 		CarVelocity = 4;
@@ -144,7 +144,7 @@ void Car::drawOnMap()
 
 double Car::getCurrentVelocity()
 {
-	return CarVelocity;
+	return isRunning()? CarVelocity:0;
 }
 
 Point * Car::getCurrentPosition()
