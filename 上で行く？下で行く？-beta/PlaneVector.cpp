@@ -4,23 +4,10 @@ using namespace std;
 #include<math.h>
 
 
-Mya::PlaneVector::PlaneVector()
-{
-	cout << "Mya 平面ベクトル管理運用コンテナ引数なし "<< this << " 作成" <<endl ;
-}
-
 Mya::PlaneVector::PlaneVector(double x, double y)
 {
-	cout << "Mya 平面ベクトル管理運用コンテナ引数あり " << this << " 作成" << endl;
 	setComponent(x, y);
 }
-
-
-Mya::PlaneVector::~PlaneVector()
-{
-	cout << "Mya 平面ベクトル管理運用コンテナ " << this << " 消滅" << endl;
-}
-
 
 void Mya::PlaneVector::updateProperty()
 {
@@ -63,26 +50,11 @@ double Mya::PlaneVector::size()
 	return Size;
 }
 
-double Mya::PlaneVector::x()
-{
-	return X;
-}
-
-double Mya::PlaneVector::y()
-{
-	return Y;
-}
-
 void Mya::PlaneVector::setZero()
 {
 	X = 0;
 	Y = 0;
 	updateProperty();
-}
-
-bool Mya::PlaneVector::isZero()
-{
-	return (Size==0);
 }
 
 double Mya::PlaneVector::scalarMultipleX(double l)

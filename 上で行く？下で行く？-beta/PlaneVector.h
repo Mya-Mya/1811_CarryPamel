@@ -29,15 +29,15 @@ namespace Mya {
 		//ベクトルの大きさを返す
 		double size();
 		//x成分を返す
-		double x();
+		double x() { return X; };
 		//y成分を返す
-		double y();
+		double y() { return Y; };
 		/*ゼロベクトル*/
 
 		//ゼロベクトルにする
 		void setZero();
 		//ゼロベクトルかどうかを返す
-		bool isZero();
+		bool isZero() { return Size == 0; };
 		/*大きさを操作する*/
 
 		//指定の大きさの時のx成分を返す
@@ -63,9 +63,8 @@ namespace Mya {
 		bool updateSubtraction();
 		/*ユーティリティ*/
 		//コンストラクタ
-		PlaneVector();
+		PlaneVector() {};
 		//ベクトルの成分を指定してコンストラクタ(x,y)
 		PlaneVector(double, double);
-		~PlaneVector();
 	};
 }
