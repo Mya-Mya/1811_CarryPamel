@@ -15,7 +15,7 @@ void Car::init()
 	CarHeadding = new Mya::PlaneVector();
 	CarHeadding->setZero();
 	//車の画像
-	CarImage = LoadGraph("Image/CarImage.png");
+	CarImage = LoadGraph("CarImage.png");
 
 	//方向転換を司るボタン
 	int ToggleW = 100, ToggleH = 100, ToggleY = WND_Y - ToggleH,
@@ -174,4 +174,11 @@ void Car::setPosition(Point *position)
 {
 	NowPosition = position;
 	BeforePosition = NowPosition;
+
+	//要リファクタリング
+	CarMovingL = 0;
+	running = true;
+
+	setCarHeadding(BeforePosition, NowPosition);
+	setCarVelocity(NowPosition->getTS());
 }

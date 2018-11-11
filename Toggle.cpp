@@ -1,6 +1,7 @@
 #include "Toggle.h"
 #include"DxLib.h"
 #include"Singleton.h"
+#include"Singleton.h"
 #pragma warning(disable:4244)
 
 Toggle::Toggle(int x, int y, int w, int h, string text, int textsize,int casingKeyNum)
@@ -41,7 +42,13 @@ void Toggle::setAvailable(bool available)
 void Toggle::update()
 {
 	//有効な状態に定められたキーが押されたらハンドラーに働きかける
-	if (available&&Keyboard::Instance()->Get(casingKeyNum) ==1)eventFire();
+	if (available&&Keyboard::Instance()->Get(casingKeyNum) == 1)eventFire();
+
+	if (x < Mouse::Instance()->GetX() && Mouse::Instance()->GetX() < x + w
+		&& y < Mouse::Instance()->GetY() && Mouse::Instance()->GetY() < y + h) {
+		if (Mouse::Instance()->GetReleasingCount(Mouse::LEFT) == 1)
+			eventFire();
+	}
 }
 
 void Toggle::draw()

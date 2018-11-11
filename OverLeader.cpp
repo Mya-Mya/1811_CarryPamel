@@ -6,7 +6,7 @@ OverLeader::OverLeader(MapData * map, Car * car, DrivePlan * driveplan, SceneCha
 	:Leadable(map, car, driveplan, changer)
 {
 	ol2 = new OverLeader2(map, car, driveplan, changer);
-	iHandle = LoadGraph("Image/GameOverImage.png", TRUE);
+	iHandle = LoadGraph("GameOverImage.png", TRUE);
 }
 
 void OverLeader::update()

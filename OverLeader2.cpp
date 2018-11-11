@@ -11,7 +11,8 @@ prevPage = new Toggle(ToggleXStarting, ToggleY, ToggleW, ToggleH, "←前", Toggle
 prevPage->addActionListener(this);
 nextPage = new Toggle(ToggleXStarting + ToggleW, ToggleY, ToggleW, ToggleH, "次→", ToggleFontSize, KEY_INPUT_RIGHT);
 nextPage->addActionListener(this);
-
+retry = new Toggle(ToggleXStarting, ToggleY - ToggleH, ToggleW * 2, ToggleH, "リトライする(Enter)", ToggleFontSize, KEY_INPUT_RETURN);
+retry->addActionListener(this);
 msc = new MessageCard(20, WND_Y - 140, 30, GetColor(240, 240, 240), GetColor(209, 86, 95));
 
 msc->addPage("あなたは私の機嫌を０にした");
@@ -23,6 +24,7 @@ msc->addPage("でも、このゲームをもう一回やるにしても\nこれで終わりにするも");
 msc->addPage("今回のゲームで私の機嫌が\nどんな風に変化するか分かっただろう");
 msc->addPage("私のこの機嫌調整プログラムは\n製作者がかなり頑張ったようだからな");
 MES_FIN=msc->addPage("あなたにこのゲームを楽しんでもらってよかった\nこの先も気を付けて(終了)");
+
 }
 
 void OverLeader2::update()
@@ -32,6 +34,7 @@ nextPage->setAvailable(
 );
 nextPage->update();
 prevPage->update();
+retry->update();
 }
 
 void OverLeader2::draw()
@@ -39,6 +42,7 @@ void OverLeader2::draw()
 msc->draw();
 nextPage->draw();
 prevPage->draw();
+retry->draw();
 }
 
 void OverLeader2::drawAsMap()
@@ -72,4 +76,5 @@ msc->nextPage();
 if (msc->isEnd())msc->jumpTo(MES_FIN);
 }
 if (e == prevPage)msc->prevPage();
+if (e == retry)changer->changeScene(Driving);
 }

@@ -134,6 +134,7 @@ double DrivingLeader::getMapExr()
 
 int DrivingLeader::getMapX()
 {
+
 	return WND_X*0.5+MAP_SCREEN_W*0.5*getMapExr()-remoteCar->getX()*getMapExr();
 }
 

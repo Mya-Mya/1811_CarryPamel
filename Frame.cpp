@@ -12,7 +12,7 @@ void Frame::changeScene(FrameScene next)
 void Frame::init()
 {
 	SetDoubleStartValidFlag(TRUE);
-	SetWindowText("パメルを運べ");
+	SetWindowText("パメルを運べ 110901");
 SetGraphMode(WND_X, WND_Y, 32);
 	ChangeWindowMode(TRUE), DxLib_Init(), SetDrawScreen(DX_SCREEN_BACK);
 
@@ -34,6 +34,7 @@ void Frame::doMainLoop()
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {
 		DrawBox(0, 0, WND_X, WND_Y, BgCol, TRUE);
 		Keyboard::Instance()->Update();
+		Mouse::Instance()->Update();
 
 		if (nextQue != None) {
 			if (myLeader != nullptr)delete myLeader;
@@ -43,6 +44,7 @@ void Frame::doMainLoop()
 				myLeader = (Leadable*)new IntroLeader(MyMap, MyCar, MyDrivePlan, this);
 				break;
 			case Driving:
+				MyCar->setPosition(MyDrivePlan->start);//要リファクタリング
 				myLeader = (Leadable*)new DrivingLeader(MyMap, MyCar, MyDrivePlan, this);
 				break;
 			case Clear:

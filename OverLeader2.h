@@ -11,6 +11,7 @@ private:
 	MessageCard * msc;
 	Toggle *prevPage;
 	Toggle *nextPage;
+	Toggle *retry;
 	int MES_FIN;
 public:
 	OverLeader2(MapData*map,Car*car,DrivePlan*driveplan,SceneChangable*changer);
